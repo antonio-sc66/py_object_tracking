@@ -20,6 +20,8 @@ Execute the code with Python3:
 python3 main.py
 ```
 
+Execute with '-h' to see the help information with the available options.
+
 **Left click and hold** on the first point of the bounding box and **drag** until you select the whole object, **release
 the left mouse button** and the tracking will start.
 
@@ -27,7 +29,3 @@ Press **'Q'** to **exit** the program.
 
 ## Licence
 This project is licenced under **GPL-3.0**, check **LICENCE** to get a copy of the licence. 
-
-
-#### TODO
- - Add argparse to allow camera mode or video input

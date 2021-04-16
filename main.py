@@ -4,6 +4,7 @@
 import time
 import dlib
 import cv2
+import argparse
 
 WIDTH, HEIGHT = 640, 480
 LIMIT_FREQ = True
@@ -28,10 +29,10 @@ def mouse_event_handler(event, x, y, flags, param):
         new_coords = True
 
 
-def main():
+def main(input_path):
     global new_coords
 
-    cap = cv2.VideoCapture("video_samples/MOT20-02-raw.webm")
+    cap = cv2.VideoCapture(input_path)
     if not cap.isOpened():
         print("Video capture not opened. Exiting program\n")
         exit(-1)
@@ -109,4 +110,14 @@ def main():
 
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
-    main()
+    ap = argparse.ArgumentParser()
+    ap.add_argument("-v", "--video", required=False, type=str, default="video_samples/MOT20-02-raw.webm",
+                    help="path of the input video file")
+    ap.add_argument("-c", "--camera", required=False, type=int,
+                    help="camera mode, enter the device number")
+    args = vars(ap.parse_args())
+
+    if args['camera'] is not None:
+        main(args['camera'])
+    else:
+        main(args['video'])
